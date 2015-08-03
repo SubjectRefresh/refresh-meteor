@@ -1,23 +1,15 @@
-if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
-}
+Tasks = new Mongo.Collection("tasks");
 
 if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
+  console.log("Hey, server speaking!");
+}
+
+if (Meteor.isClient) {
+  // This code only runs on the client
+  console.log("Hey, client speaking!");
+
+//  Meteor.subscribe("t_1");
+//  Meteor.subscribe("t_2");
+  Template.t_1.name = "Finnian";
+  Template.t_2.name = "Alex";
 }
