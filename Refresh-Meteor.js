@@ -19,7 +19,8 @@ if (Meteor.isClient) {
                 email: emailVar,
                 password: passwordVar
             }, function(error){
-                console.log(error);
+                $("#errors").html("There was an error registering you: <strong>"+error.reason+"</strong>");
+                console.log(error.reason);
             });
         }
     });
@@ -36,8 +37,7 @@ if (Meteor.isClient) {
                 }
                 else {
                     console.log("Not logged in");
-                    var message = "There was an error logging in: <strong>" + error.reason + "</strong>";
-                    $("#form-messages").html(message)
+                    $("#form-messages").html("There was an error logging in: <strong>" + error.reason + "</strong>");
                 }
             });
         }
