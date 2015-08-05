@@ -103,6 +103,9 @@ if (Meteor.isClient) {
             }).fetch()
             for (i = 0; i < courseData.length; i++) {
                 console.log(courseData[i].course);
+                var courseID = courseData[i].course.split("-")[0];
+                var year = courseData[i].course.split("-")[1];
+                
             }
         }
     }
