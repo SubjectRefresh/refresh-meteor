@@ -18,18 +18,9 @@
     <!-- this is last so it can override other css if needed -->
 </head>
 
-<body>
-    {{> container_template }}
+<body id="body1">
+    {{#if currentUser}} {{> nav}} {{> dashboard}} {{else}} {{> login}} {{/if}}
 </body>
-<template name="container_template">
-    {{> nav}}
-    {{#if currentUser}}
-        {{> dashboard}}
-    {{else}}
-        {{> register}}
-        {{> login}}
-    {{/if}}
-</template>
 <template name="nav">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -52,7 +43,7 @@
                     <li><a href="learn"><strong>LEARN</strong></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="logout" class="logout"><strong>LOGOUT</strong></a></li>
+                    <li><a class="logout"><strong>LOGOUT</strong></a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -61,126 +52,116 @@
     </nav>
 </template>
 <template name="login">
-    <body id="body1">
-        <!-- Main Width of Content -->
-        <div class="container">
-            <div class="row" id="needs_margin_top">
-                <div class="text-center col-lg-4 col-lg-offset-4 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" id="homecontent">
-                    <div class="page-header" style="border:none !important;">
-                        <a href="/">
-                            <img id="arrows" src="common/img/logo.png" style="width:80%;margin-left:auto;margin-right:auto;margin-top:50%;" draggable="false" />
-                        </a>
-                    </div>
-                    <h1 style="font-weight:bold;margin-right:auto;margin-left:auto;margin-top:30px;"><font style="color:#E1F5FE;">LOGIN</font></h1>
-                    <form class="form">
-                        <div class="form-group">
-                            <input type="email" placeholder="Email" name="loginEmail">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" name="loginPassword">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit">SIGN IN</button>
-                        </div>
-                    </form>
-                    <p><a href="register" style="color:#fff;">Click here to <strong>register</strong></a></p>
-                    <hr>
-                    <center><small><font style="color:#fff;">&copy; 2015 SubjectRefresh.info | All Rights Reserved<br>By using this site, you agree to our use of cookies.</font></small></center>
+    <!-- Main Width of Content -->
+    <div class="container">
+        <div class="row" id="needs_margin_top">
+            <div class="text-center col-lg-4 col-lg-offset-4 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" id="homecontent">
+                <div class="page-header" style="border:none !important;">
+                    <a href="/">
+                        <img id="arrows" src="common/img/logo.png" style="width:80%;margin-left:auto;margin-right:auto;margin-top:50%;" draggable="false" />
+                    </a>
                 </div>
+                <h1 style="font-weight:bold;margin-right:auto;margin-left:auto;margin-top:30px;"><font style="color:#E1F5FE;">LOGIN</font></h1>
+                <form class="form">
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" name="loginEmail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" name="loginPassword">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">SIGN IN</button>
+                    </div>
+                </form>
+                <p><a href="register" style="color:#fff;">Click here to <strong>register</strong></a></p>
+                <hr>
+                <center><small><font style="color:#fff;">&copy; 2015 SubjectRefresh.info | All Rights Reserved<br>By using this site, you agree to our use of cookies.</font></small></center>
             </div>
         </div>
-    </body>
+    </div>
 </template>
 <template name="dashboard">
-
-    <body id="body1">
-        <!-- Main Width of Content -->
-        <div id="errors"></div>
-        <div class="container">
-            <div class="row" id="needs_margin_top">
-                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12" id="bodycontent">
-                    <h3 style="font-weight:bold;"><font style="color:#3D3D3D;">Your Course(s)</font></h3>
-                    <div class="bs-example" data-example-id="thumbnails-with-custom-content">
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <div class="caption">
-                                        <h3>Course 1</h3>
-                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                        <p>
-                                            <center><a href="#" class="btn btn-primary" role="button"><strong>View this Course</strong></a></center>
-                                        </p>
-                                    </div>
+    <!-- Main Width of Content -->
+    <div class="container">
+        <div class="row" id="needs_margin_top">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12" id="bodycontent">
+                <h3 style="font-weight:bold;"><font style="color:#3D3D3D;">Your Course(s)</font></h3>
+                <div class="bs-example" data-example-id="thumbnails-with-custom-content">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <div class="caption">
+                                    <h3>Course 1</h3>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                    <p>
+                                        <center><a href="#" class="btn btn-primary" role="button"><strong>View this Course</strong></a></center>
+                                    </p>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <div class="caption">
-                                        <h3>Course 2</h3>
-                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                        <p>
-                                            <center><a href="#" class="btn btn-primary" role="button"><strong>View this Course</strong></a></center>
-                                        </p>
-                                    </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <div class="caption">
+                                    <h3>Course 2</h3>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                    <p>
+                                        <center><a href="#" class="btn btn-primary" role="button"><strong>View this Course</strong></a></center>
+                                    </p>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <div class="caption">
-                                        <h3>Course 3</h3>
-                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                        <p>
-                                            <center><a href="#" class="btn btn-primary" role="button"><strong>View this Course</strong></a></center>
-                                        </p>
-                                    </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <div class="caption">
+                                    <h3>Course 3</h3>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                    <p>
+                                        <center><a href="#" class="btn btn-primary" role="button"><strong>View this Course</strong></a></center>
+                                    </p>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <div class="caption">
-                                        <h3>Course 4</h3>
-                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                        <p>
-                                            <center><a href="#" class="btn btn-primary" role="button"><strong>View this Course</strong></a></center>
-                                        </p>
-                                    </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <div class="caption">
+                                    <h3>Course 4</h3>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                    <p>
+                                        <center><a href="#" class="btn btn-primary" role="button"><strong>View this Course</strong></a></center>
+                                    </p>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-12">
-                                <div class="thumbnail">
-                                    <div class="caption">
-                                        <p>
-                                            <center><a href="#" class="btn btn-primary" role="button"><strong>Add a new Course</strong></a></center>
-                                        </p>
-                                    </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12">
+                            <div class="thumbnail">
+                                <div class="caption">
+                                    <p>
+                                        <center><a href="#" class="btn btn-primary" role="button"><strong>Add a new Course</strong></a></center>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <center><small><font>&copy; 2015 SubjectRefresh.info | All Rights Reserved<br>By using this site, you agree to our use of cookies.</font></small></center>
                 </div>
+                <hr>
+                <center><small><font>&copy; 2015 SubjectRefresh.info | All Rights Reserved<br>By using this site, you agree to our use of cookies.</font></small></center>
             </div>
         </div>
-        <br/>
-        <!-- bootstrap fotter - needs inputting -->
-    </body>
+    </div>
 </template>
 <template name="register">
-
-    <body id="body1">
-        <!-- Main Width of Content -->
-        <div class="container">
-            <div class="row" id="needs_margin_top">
-                <div class="text-center col-lg-4 col-lg-offset-4 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" id="homecontent">
-                    <div class="page-header" style="border:none !important;">
-                        <a href="/">
-                            <img id="arrows" src="common/img/logo.png" style="width:80%;margin-left:auto;margin-right:auto;margin-top:50%;" draggable="false" />
-                        </a>
-                    </div>
-                    <h1 style="font-weight:bold;margin-right:auto;margin-left:auto;margin-top:30px;"><font style="color:#E1F5FE;">RE</font><font style="color:#3D3D3D;">GISTER</font></h1>
-                    <form class="form">
-                        <!--<div class="form-group">
+    <!-- Main Width of Content -->
+    <div class="container">
+        <div class="row" id="needs_margin_top">
+            <div class="text-center col-lg-4 col-lg-offset-4 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" id="homecontent">
+                <div class="page-header" style="border:none !important;">
+                    <a href="/">
+                        <img id="arrows" src="common/img/logo.png" style="width:80%;margin-left:auto;margin-right:auto;margin-top:50%;" draggable="false" />
+                    </a>
+                </div>
+                <h1 style="font-weight:bold;margin-right:auto;margin-left:auto;margin-top:30px;"><font style="color:#E1F5FE;">RE</font><font style="color:#3D3D3D;">GISTER</font></h1>
+                <form class="form">
+                    <!--<div class="form-group">
                             <input type="text" placeholder="First Name" name="fName" />
                         </div>
                         <div class="form-group">
@@ -189,30 +170,28 @@
                         <div class="form-group">
                             <input type="text" placeholder="User Name" name="uName">
                         </div>-->
-                        <div class="form-group">
-                            <input type="email" placeholder="Email" name="loginEmail">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" name="loginPassword">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit">CREATE</button>
-                            <a href="#">
-                                <button type="reset">RESET</button>
-                            </a>
-                        </div>
-                    </form>
-                    <p><a href="login" style="color:#fff;">Click here to <strong>login</strong></a></p>
-                    <hr>
-                    <center><small><font style="color:#fff;">&copy; 2015 SubjectRefresh.info | All Rights Reserved<br>By using this site, you agree to our use of cookies.</font></small></center>
-                </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" name="loginEmail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" name="loginPassword">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">CREATE</button>
+                        <a href="#">
+                            <button type="reset">RESET</button>
+                        </a>
+                    </div>
+                </form>
+                <p><a href="login" style="color:#fff;">Click here to <strong>login</strong></a></p>
+                <hr>
+                <center><small><font style="color:#fff;">&copy; 2015 SubjectRefresh.info | All Rights Reserved<br>By using this site, you agree to our use of cookies.</font></small></center>
             </div>
         </div>
-    </body>
+    </div>
 </template>
 <template name="learn">
 
-    <body id="body1" ng-controller="RefreshController as Refresh">
         <div class="container">
             <div class="row" id="needs_margin_top">
                 <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12" id="bodycontent" style="text-align:center;">
@@ -242,41 +221,37 @@
             </div>
         </div>
         <!-- bootstrap fotter - needs inputting -->
-    </body>
 </template>
 <template name="choose">
-
-    <body id="body1">
-        <div class="container">
-            <div class="row" id="needs_margin_top">
-                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12" id="bodycontent">
-                    <div class="row">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-                            <h1>Course selection</h1>
-                            <form>
-                                <label for="selectBoard">Board</label>
-                                <select id="selectBoard" name="course" class="form-control">
-                                    <option value="CIE">CIE</option>
-                                    <option class="disabled" value="Edexcel" disabled="disabled">Edexcel</option>
-                                    <option class="disabled" value="AQA" disabled="disabled">AQA</option>
-                                    <option class="disabled" value="OCR" disabled="disabled">OCR</option>
-                                </select>
-                                <label for="selectSubject">Subject</label>
-                                <select id="selectSubject" name="subject" class="form-control">
-                                    <option disabled="" id="remove_subject">Loading...</option>
-                                </select>
-                                <label for="selectSyllabus">Syllabus</label>
-                                <select id="selectSyllabus" name="syllabus" class="form-control">
-                                    <option disabled="" id="remove_syllabus">Loading...</option>
-                                </select>
-                            </form>
-                        </div>
+    <div class="container">
+        <div class="row" id="needs_margin_top">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12" id="bodycontent">
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+                        <h1>Course selection</h1>
+                        <form>
+                            <label for="selectBoard">Board</label>
+                            <select id="selectBoard" name="course" class="form-control">
+                                <option value="CIE">CIE</option>
+                                <option class="disabled" value="Edexcel" disabled="disabled">Edexcel</option>
+                                <option class="disabled" value="AQA" disabled="disabled">AQA</option>
+                                <option class="disabled" value="OCR" disabled="disabled">OCR</option>
+                            </select>
+                            <label for="selectSubject">Subject</label>
+                            <select id="selectSubject" name="subject" class="form-control">
+                                <option disabled="" id="remove_subject">Loading...</option>
+                            </select>
+                            <label for="selectSyllabus">Syllabus</label>
+                            <select id="selectSyllabus" name="syllabus" class="form-control">
+                                <option disabled="" id="remove_syllabus">Loading...</option>
+                            </select>
+                        </form>
                     </div>
-                    <hr>
-                    <center><small><font>&copy; 2015 SubjectRefresh.info | All Rights Reserved<br>By using this site, you agree to our use of cookies.</font></small></center>
                 </div>
+                <hr>
+                <center><small><font>&copy; 2015 SubjectRefresh.info | All Rights Reserved<br>By using this site, you agree to our use of cookies.</font></small></center>
             </div>
         </div>
-        <!-- bootstrap fotter - needs inputting -->
-    </body>
+    </div>
+    <!-- bootstrap fotter - needs inputting -->
 </template>

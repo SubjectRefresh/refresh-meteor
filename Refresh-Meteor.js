@@ -126,13 +126,4 @@ if (Meteor.isClient) {
     });
     // This code only runs on the client
     console.log("Hey, client speaking!");
-
-    Template.container_template.helpers({
-        whichOne: function() {
-            var template = "login";
-            return template;
-            //return Session.get('edit') ? 'recordUpdate' : 'recordNew'
-            // note that we return a string - per http://docs.meteor.com/#template_dynamic
-        }
-    });
 }
