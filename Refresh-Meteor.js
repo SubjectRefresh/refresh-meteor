@@ -5,7 +5,8 @@ if (Meteor.isServer) {
 }
 
 if (Meteor.isClient) {
-    currentPage = "";
+    Session.setDefault('currentPage', false);
+
     Array.prototype.last = function() {
         return this[this.length - 1];
     }
@@ -41,7 +42,7 @@ if (Meteor.isClient) {
             });
         },
         'click #register': function(event, template){
-            currentPage = "register";
+            Session.set('currentPage', "register");
         }
     });
 
@@ -52,32 +53,30 @@ if (Meteor.isClient) {
             Meteor.logout();
         },
         'click #learn': function(event) {
-            console.log("Learning...");
             event.preventDefault();
-            currentPage = "learn";
+            Session.set('currentPage', "learn");
         }
     });
 
     Template.register.events({
         'click #login': function(event) {
-            console.log("Logging in...");
             event.preventDefault();
-            currentPage = "login";
+            Session.set('currentPage', "login");
         }
     });
 
     Template.container_template.helpers({
         whichOne: function() {
-            console.log("Redirect to: "  + currentPage);
-            if (currentPage) {
-                return currentPage;
+            console.log("Redirect to: "  + Session.get('currentPage'));
+            if (Session.get('currentPage')) {
+                return Session.get('currentPage');
             }
             if (Meteor.user()) {
-                currentPage = null;
+                currentPage = Session.set('currentPage', false);
                 return "dashboard";
             }
             if (!Meteor.user()) {
-                currentPage = null;
+                currentPage = Session.set('currentPage', false);
                 return "login";
             }
         }
