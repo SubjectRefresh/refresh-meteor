@@ -83,10 +83,15 @@ if (Meteor.isClient) {
         }
     });
 
-    Template.myTemplate.rendered = function() {
+    Template.dashboard.rendered = function() {
         if (!this._rendered) {
             this._rendered = true;
             console.log('Template onLoad');
+            var courseData = Courses.find({
+                name: Meteor.userId()
+            }).fetch()
+            for (i = 0; i < courseData.length; i++) {
+            }
         }
     }
 
