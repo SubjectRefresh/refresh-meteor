@@ -11,29 +11,51 @@ if (Meteor.isClient) {
 
     Template.register.events({
         'submit form': function(event) {
+            console.log("Registering...");
             event.preventDefault();
             var emailVar = event.target.registerEmail.value;
             var passwordVar = event.target.registerPassword.value;
             Accounts.createUser({
                 email: emailVar,
                 password: passwordVar
+            }, function(error){
+                console.log(error);
             });
         }
     });
 
     Template.login.events({
-        'submit form': function(event) {
+        'submit form': function(event, template) {
+            console.log("Logging in...");
             event.preventDefault();
             var emailVar = event.target.loginEmail.value;
             var passwordVar = event.target.loginPassword.value;
-            Meteor.loginWithPassword(emailVar, passwordVar);
+            Meteor.loginWithPassword(emailVar, passwordVar, function(error) {
+                if (Meteor.user()) {
+                    console.log("Logged in");
+                }
+                else {
+                    console.log("Not logged in");
+                    var message = "There was an error logging in: <strong>" + error.reason + "</strong>";
+                    $("#form-messages").html(message)
+                }
+            });
         }
     });
 
     Template.dashboard.events({
         'click .logout': function(event) {
+            console.log("Logging out...");
             event.preventDefault();
             Meteor.logout();
+        }
+    });
+
+    Template.container_template.helpers({
+        whichOne: function() {
+            return "register";
+            if (Meteor.user()) {return "dashboard";}
+            if (!Meteor.user()) {return "login";}
         }
     });
 

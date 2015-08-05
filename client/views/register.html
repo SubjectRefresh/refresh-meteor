@@ -1,0 +1,39 @@
+<template name="register">
+    <!-- Main Width of Content -->
+    <div class="container">
+        <div class="row" id="needs_margin_top">
+            <div class="text-center col-lg-4 col-lg-offset-4 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" id="homecontent">
+                <div class="page-header" style="border:none !important;">
+                    <a href="/">
+                        <img id="arrows" src="common/img/logo.png" style="width:80%;margin-left:auto;margin-right:auto;margin-top:50%;" draggable="false" />
+                    </a>
+                </div>
+                <h1 style="font-weight:bold;margin-right:auto;margin-left:auto;margin-top:30px;"><font style="color:#E1F5FE;">RE</font><font style="color:#3D3D3D;">GISTER</font></h1>
+                <form class="form">
+                    <!--<div class="form-group">
+                            <input type="text" placeholder="First Name" name="fName" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Last Name" name="lName">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="User Name" name="uName">
+                        </div>-->
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" name="loginEmail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" name="loginPassword">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">CREATE</button>
+                        <a href="#">
+                            <button type="reset">RESET</button>
+                        </a>
+                    </div>
+                </form>
+                <p><a href="login" style="color:#fff;">Click here to <strong>login</strong></a></p>
+            </div>
+        </div>
+    </div>
+</template>
