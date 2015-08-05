@@ -191,7 +191,7 @@ if (Meteor.isClient) {
     $("#selectSyllabus").on("click", function() {
         goGetSyllabus($("#selectSyllabus").find(":selected").attr("value"));
     });
-    $("#selectSyllabus").on("change", function() {
+    $("#selectSyllabus").on("change", function() {  
         goGetSyllabus($("#selectSyllabus").find(":selected").attr("value"));
     });
     // This code only runs on the client
