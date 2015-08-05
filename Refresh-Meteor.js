@@ -9,6 +9,34 @@ if (Meteor.isClient) {
         return this[this.length - 1];
     }
 
+    Template.register.events({
+        'submit form': function(event) {
+            event.preventDefault();
+            var emailVar = event.target.registerEmail.value;
+            var passwordVar = event.target.registerPassword.value;
+            Accounts.createUser({
+                email: emailVar,
+                password: passwordVar
+            });
+        }
+    });
+
+    Template.login.events({
+        'submit form': function(event) {
+            event.preventDefault();
+            var emailVar = event.target.loginEmail.value;
+            var passwordVar = event.target.loginPassword.value;
+            Meteor.loginWithPassword(emailVar, passwordVar);
+        }
+    });
+
+    Template.dashboard.events({
+        'click .logout': function(event) {
+            event.preventDefault();
+            Meteor.logout();
+        }
+    });
+
     function updateSubjects() {
         var examBoardBuffer = document.getElementById("selectBoard");
         var examBoard = examBoardBuffer.options[examBoardBuffer.selectedIndex].value;
@@ -101,7 +129,8 @@ if (Meteor.isClient) {
 
     Template.container_template.helpers({
         whichOne: function() {
-            return "login";
+            var template = "login";
+            return template;
             //return Session.get('edit') ? 'recordUpdate' : 'recordNew'
             // note that we return a string - per http://docs.meteor.com/#template_dynamic
         }

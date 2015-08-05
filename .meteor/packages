@@ -8,5 +8,5 @@ meteor-platform
 autopublish
 insecure
 accounts-password
-accounts-ui
 accounts-base
+accounts-ui-unstyled

@@ -14,40 +14,70 @@
     <script src="common/js/refresh.js"></script>
     <script src="common/js/js.cookie.js"></script>
     <script src="common/js/animate_inputs.js"></script>
-    <link rel="stylesheet" href="common/css/main.css"> <!-- this is last so it can override other css if needed -->
+    <link rel="stylesheet" href="common/css/main.css">
+    <!-- this is last so it can override other css if needed -->
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>REFRESH</h1>
-        </header>
-    </div>
     {{> container_template }}
 </body>
 <template name="container_template">
-    {{> Template.dynamic template=whichOne}}
+    {{> nav}}
+    {{#if currentUser}}
+        {{> dashboard}}
+    {{else}}
+        {{> register}}
+        {{> login}}
+    {{/if}}
+</template>
+<template name="nav">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img alt="Brand" src="common/img/secondlogo.png" style="width:45px;">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#"><strong>DASHBOARD</strong></a></li>
+                    <li><a href="learn"><strong>LEARN</strong></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="logout" class="logout"><strong>LOGOUT</strong></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 </template>
 <template name="login">
-
     <body id="body1">
-        <div id="errors"></div>
         <!-- Main Width of Content -->
         <div class="container">
             <div class="row" id="needs_margin_top">
                 <div class="text-center col-lg-4 col-lg-offset-4 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" id="homecontent">
                     <div class="page-header" style="border:none !important;">
                         <a href="/">
-                            <img id="arrows" src="common/img/logo.png" style="width:80%;margin-left:auto;margin-right:auto;margin-top:50%;" draggable="false"/>
+                            <img id="arrows" src="common/img/logo.png" style="width:80%;margin-left:auto;margin-right:auto;margin-top:50%;" draggable="false" />
                         </a>
                     </div>
                     <h1 style="font-weight:bold;margin-right:auto;margin-left:auto;margin-top:30px;"><font style="color:#E1F5FE;">LOGIN</font></h1>
-                    <form class="form" method="post" action="/checkLogin">
+                    <form class="form">
                         <div class="form-group">
-                            <input type="email" placeholder="Email" name="email">
+                            <input type="email" placeholder="Email" name="loginEmail">
                         </div>
                         <div class="form-group">
-                            <input type="password" placeholder="Password" name="password">
+                            <input type="password" placeholder="Password" name="loginPassword">
                         </div>
                         <div class="form-group">
                             <button type="submit">SIGN IN</button>
@@ -63,36 +93,8 @@
 </template>
 <template name="dashboard">
 
-    <body id="body1" ng-controller="RefreshController as Refresh">
+    <body id="body1">
         <!-- Main Width of Content -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">
-                        <img alt="Brand" src="common/img/secondlogo.png" style="width:45px;">
-                    </a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#"><strong>DASHBOARD</strong></a></li>
-                        <li><a href="learn"><strong>LEARN</strong></a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="logout"><strong>LOGOUT</strong></a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
         <div id="errors"></div>
         <div class="container">
             <div class="row" id="needs_margin_top">
@@ -177,8 +179,8 @@
                         </a>
                     </div>
                     <h1 style="font-weight:bold;margin-right:auto;margin-left:auto;margin-top:30px;"><font style="color:#E1F5FE;">RE</font><font style="color:#3D3D3D;">GISTER</font></h1>
-                    <form class="form" action="/register" method="POST">
-                        <div class="form-group">
+                    <form class="form">
+                        <!--<div class="form-group">
                             <input type="text" placeholder="First Name" name="fName" />
                         </div>
                         <div class="form-group">
@@ -186,12 +188,12 @@
                         </div>
                         <div class="form-group">
                             <input type="text" placeholder="User Name" name="uName">
+                        </div>-->
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" name="loginEmail">
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Email" name="eMail" onchange="changeCookie()">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" name="pass" onchange="changeCookie()">
+                            <input type="password" placeholder="Password" name="loginPassword">
                         </div>
                         <div class="form-group">
                             <button type="submit">CREATE</button>
@@ -211,35 +213,6 @@
 <template name="learn">
 
     <body id="body1" ng-controller="RefreshController as Refresh">
-        <!-- Main Width of Content -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">
-                        <img alt="Brand" src="common/img/secondlogo.png" style="width:45px;">
-                    </a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="dashboard"><strong>DASHBOARD</strong></a></li>
-                        <li class="active"><a href="learn"><strong>LEARN</strong></a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="logout"><strong>LOGOUT</strong></a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
         <div class="container">
             <div class="row" id="needs_margin_top">
                 <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12" id="bodycontent" style="text-align:center;">
@@ -274,35 +247,6 @@
 <template name="choose">
 
     <body id="body1">
-        <!-- Main Width of Content -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">
-                        <img alt="Brand" src="/common/img/secondlogo.png" style="width:45px;">
-                    </a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="dashboard"><strong>DASHBOARD</strong></a></li>
-                        <li><a href="learn"><strong>LEARN</strong></a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="logout"><strong>LOGOUT</strong></a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
         <div class="container">
             <div class="row" id="needs_margin_top">
                 <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12" id="bodycontent">
