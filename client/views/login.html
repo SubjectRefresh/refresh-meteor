@@ -1,0 +1,28 @@
+<template name="login">
+    <!-- Main Width of Content -->
+    <div class="container">
+        <div class="row" id="needs_margin_top">
+            <div class="text-center col-lg-4 col-lg-offset-4 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" id="homecontent">
+                <div>
+                    <a href="/">
+                        <img id="arrows" src="common/img/logo.png" style="width:80%;margin-left:auto;margin-right:auto;margin-top:25%;margin-bottom:10%" draggable="false" />
+                    </a>
+                </div>
+                <div id="form-messages"></div>
+                <h1 style="font-weight:bold;margin-right:auto;margin-left:auto;margin-top:30px;"><font style="color:#E1F5FE;">LOGIN</font></h1>
+                <form class="form">
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" name="loginEmail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" name="loginPassword">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">SIGN IN</button>
+                    </div>
+                </form>
+                <p><a href="register" style="color:#fff;">Click here to <strong>register</strong></a></p>
+            </div>
+        </div>
+    </div>
+</template>
