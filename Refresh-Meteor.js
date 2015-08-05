@@ -5,21 +5,21 @@ if (Meteor.isServer) {
 }
 
 if (Meteor.isClient) {
+    currentPage = "";
     Array.prototype.last = function() {
         return this[this.length - 1];
     }
 
     Template.register.events({
         'submit form': function(event) {
-            console.log("Registering...");
             event.preventDefault();
             var emailVar = event.target.registerEmail.value;
             var passwordVar = event.target.registerPassword.value;
             Accounts.createUser({
                 email: emailVar,
                 password: passwordVar
-            }, function(error){
-                $("#errors").html("There was an error registering you: <strong>"+error.reason+"</strong>");
+            }, function(error) {
+                $("#errors").html("There was an error registering you: <strong>" + error.reason + "</strong>");
                 console.log(error.reason);
             });
         }
@@ -34,28 +34,52 @@ if (Meteor.isClient) {
             Meteor.loginWithPassword(emailVar, passwordVar, function(error) {
                 if (Meteor.user()) {
                     console.log("Logged in");
-                }
-                else {
+                } else {
                     console.log("Not logged in");
                     $("#form-messages").html("There was an error logging in: <strong>" + error.reason + "</strong>");
                 }
             });
+        },
+        'click #register': function(event, template){
+            currentPage = "register";
         }
     });
 
-    Template.dashboard.events({
-        'click .logout': function(event) {
+    Template.nav.events({
+        'click #logout': function(event) {
             console.log("Logging out...");
             event.preventDefault();
             Meteor.logout();
+        },
+        'click #learn': function(event) {
+            console.log("Learning...");
+            event.preventDefault();
+            currentPage = "learn";
+        }
+    });
+
+    Template.register.events({
+        'click #login': function(event) {
+            console.log("Logging in...");
+            event.preventDefault();
+            currentPage = "login";
         }
     });
 
     Template.container_template.helpers({
         whichOne: function() {
-            return "register";
-            if (Meteor.user()) {return "dashboard";}
-            if (!Meteor.user()) {return "login";}
+            console.log("Redirect to: "  + currentPage);
+            if (currentPage) {
+                return currentPage;
+            }
+            if (Meteor.user()) {
+                currentPage = null;
+                return "dashboard";
+            }
+            if (!Meteor.user()) {
+                currentPage = null;
+                return "login";
+            }
         }
     });
 

@@ -19,5 +19,6 @@
     {{> container_template}}
 </body>
 <template name="container_template">
+    {{whichone}}
     {{#if currentUser}} {{> nav}} {{/if}} {{> Template.dynamic template=whichOne}} {{> footer}}
 </template>
