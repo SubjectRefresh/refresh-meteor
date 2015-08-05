@@ -1,4 +1,5 @@
 Tasks = new Mongo.Collection("tasks");
+Courses = new Mongo.Collection('courses');
 
 if (Meteor.isServer) {
     console.log("Hey, server speaking!");
@@ -41,7 +42,7 @@ if (Meteor.isClient) {
                 }
             });
         },
-        'click #register': function(event, template){
+        'click #register': function(event, template) {
             Session.set('currentPage', "register");
         }
     });
@@ -67,7 +68,7 @@ if (Meteor.isClient) {
 
     Template.container_template.helpers({
         whichOne: function() {
-            console.log("Redirect to: "  + Session.get('currentPage'));
+            console.log("Redirect to: " + Session.get('currentPage'));
             if (Session.get('currentPage')) {
                 return Session.get('currentPage');
             }
@@ -81,6 +82,13 @@ if (Meteor.isClient) {
             }
         }
     });
+
+    Template.myTemplate.rendered = function() {
+        if (!this._rendered) {
+            this._rendered = true;
+            console.log('Template onLoad');
+        }
+    }
 
     function updateSubjects() {
         var examBoardBuffer = document.getElementById("selectBoard");
