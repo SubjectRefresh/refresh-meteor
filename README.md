@@ -13,3 +13,5 @@ Transfer styling from Node to Meteor and create buttons which call controller.js
 Start moving functionality from Node to Meteor
 
 Think about using their login page, it seems a large amount simpler.
+
+Copyright (c) 2015 SubjectRefresh.info
