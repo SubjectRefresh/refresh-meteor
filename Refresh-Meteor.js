@@ -91,6 +91,7 @@ if (Meteor.isClient) {
                 name: Meteor.userId()
             }).fetch()
             for (i = 0; i < courseData.length; i++) {
+                console.log(courseData[i].course);
             }
         }
     }
