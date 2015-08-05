@@ -56,6 +56,10 @@ if (Meteor.isClient) {
         'click #learn': function(event) {
             event.preventDefault();
             Session.set('currentPage', "learn");
+        },
+        'click #dashboard': function(event) {
+            event.preventDefault();
+            Session.set('currentPage', "dashboard");
         }
     });
 
@@ -63,6 +67,13 @@ if (Meteor.isClient) {
         'click #login': function(event) {
             event.preventDefault();
             Session.set('currentPage', "login");
+        }
+    });
+
+    Template.dashboard.events({
+        'click #choose': function(event) {
+            event.preventDefault();
+            Session.set('currentPage', "choose");
         }
     });
 
