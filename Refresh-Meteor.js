@@ -1,9 +1,10 @@
+var list = require('./modules/list.js');
+var listModule = new list();
+
 Tasks = new Mongo.Collection("tasks");
 Courses = new Mongo.Collection('courses');
 
-if (Meteor.isServer) {
-    console.log("Hey, server speaking!");
-}
+if (Meteor.isServer) {}
 
 if (Meteor.isClient) {
     Session.setDefault('currentPage', false);
@@ -83,6 +84,32 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.choose.events({
+        'change #selectBoard': function(event) {
+            var newVal = $(event.target).val();
+            Session.set("board", newVal);
+            console.log("Got change on board selection: " + newVal);
+            listModule.examBoardCIE(function(data) {
+                console.log(data)
+            });
+        },
+        'click #selectBoard': function(event) {
+            var newVal = $(event.target).val();
+            Session.set("board", newVal);
+            console.log("Got change on board selection: " + newVal);
+        },
+        'change #selectSubject': function(event) {
+            var newVal = $(event.target).val();
+            Session.set("subject", newVal);
+            console.log("Got change on subject selection: " + newVal);
+        },
+        'change #selectSyllabus': function(event) {
+            var newVal = $(event.target).val();
+            Session.set("syllabus", newVal);
+            console.log("Got change on syllabus selection: " + newVal);
+        }
+    })
+
     Template.container_template.helpers({
         whichOne: function() {
             console.log("Redirect to: " + Session.get('currentPage'));
@@ -103,7 +130,6 @@ if (Meteor.isClient) {
     Template.dashboard.rendered = function() {
         if (!this._rendered) {
             this._rendered = true;
-            console.log('Template onLoad');
             var courseData = Courses.find({
                 name: Meteor.userId()
             }).fetch()
@@ -111,7 +137,7 @@ if (Meteor.isClient) {
                 console.log(courseData[i].course);
                 var courseID = courseData[i].course.split("-")[0];
                 var year = courseData[i].course.split("-")[1];
-                
+
             }
         }
     }
