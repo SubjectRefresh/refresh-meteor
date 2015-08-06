@@ -36,6 +36,7 @@ if (Meteor.isClient) {
             Meteor.loginWithPassword(emailVar, passwordVar, function(error) {
                 if (Meteor.user()) {
                     console.log("Logged in");
+                    Session.set('currentPage', "dashboard");
                 } else {
                     console.log("Not logged in");
                     $("#form-messages").html("There was an error logging in: <strong>" + error.reason + "</strong>");
