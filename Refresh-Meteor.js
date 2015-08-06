@@ -60,6 +60,10 @@ if (Meteor.isClient) {
         'click #dashboard': function(event) {
             event.preventDefault();
             Session.set('currentPage', "dashboard");
+        },
+        'click #home': function(event) {
+            event.preventDefault();
+            Session.set('currentPage', "dashboard");
         }
     });
 
