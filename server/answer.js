@@ -5,5 +5,3 @@ var answerModule = function() {
         callback(input);
     };
 }
-
-module.exports = answerModule;

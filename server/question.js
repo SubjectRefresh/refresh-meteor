@@ -7,10 +7,6 @@
 //
 /////////////////////////////////////////////////////////////////////////
 
-var colors = require("colors");
-var utf8 = require('utf8');
-var request = require('sync-request');
-
 colors.setTheme({
     title: ['white', 'italic'],
     error: ['bgRed', 'white', 'bold'],
@@ -45,5 +41,3 @@ var questionModule = function () {
 };
 //callback = [[[[Entity, StartPos, EndPos], [Entity, StartPos, EndPos]], sentence], [[[Entity, StartPos, EndPos], [Entity, StartPos, EndPos]], sentence]]
 console.log("Convert.JS:".bold + " Successfully Defined `convert`".blue);
-
-module.exports = questionModule;

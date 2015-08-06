@@ -1,11 +1,3 @@
-var request = require('request');
-var cheerio = require('cheerio');
-var bing = require('node-bing-api')({ accKey: "InGGbJ6KRh/VpRJgiQLn1dwXms5Od8n8k9KGbTBdjb4" });
-var fs = require('fs');
-var natural = require("natural");
-var colors = require("colors");
-var async = require("async");
-
 colors.setTheme({
   title: ['white', 'italic'],
   error: ['bgRed', 'white', 'bold'],
@@ -117,5 +109,3 @@ var researchModule = function() {
         }
     };
 }
-
-module.exports = researchModule;

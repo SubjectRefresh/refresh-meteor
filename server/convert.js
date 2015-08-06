@@ -6,10 +6,6 @@
 //O - Array of searchable terms as strings
 //
 /////////////////////////////////////////////////////////////////////////
-var utf8 = require('utf8');
-var request = require('sync-request');
-var colors = require("colors");
-
 colors.setTheme({
     title: ['white', 'italic'],
     error: ['bgRed', 'white', 'bold'],
@@ -80,5 +76,3 @@ var convertModule = function () {
 
     console.log("Convert.JS:".title + " Successfully Defined `convert`".success);
 };
-
-module.exports = convertModule;

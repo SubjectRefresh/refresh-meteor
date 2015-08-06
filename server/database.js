@@ -1,11 +1,3 @@
-var mysql = require('mysql');
-var crypto = require('crypto');
-var connection = mysql.createConnection({
-    host: '185.38.45.194',
-    user: 'hexcompu_ref',
-    password: 'AWDRGY123123',
-    database: 'hexcompu_refresh'
-});
 connection.connect();
 console.log('Server Login')
 

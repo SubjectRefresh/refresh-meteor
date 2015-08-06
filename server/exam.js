@@ -1,8 +1,3 @@
-var request = require('request');
-var cheerio = require('cheerio');
-var fs = require('fs');
-var colors = require('colors');
-
 colors.setTheme({
   title: ['white', 'italic'],
   error: ['bgRed', 'white', 'bold'],
@@ -71,5 +66,3 @@ var examBoardModule = function() {
         });
     };
 };
-
-module.exports = examBoardModule;

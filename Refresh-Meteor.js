@@ -1,6 +1,3 @@
-var list = require('./modules/list.js');
-var listModule = new list();
-
 Tasks = new Mongo.Collection("tasks");
 Courses = new Mongo.Collection('courses');
 

@@ -1,11 +1,3 @@
-var pdf = require("pdftohtmljs");
-var fs = require("fs");
-var cheerio = require("cheerio");
-var natural = require("natural");
-var colors = require("colors");
-var request = require("request");
-var path = require("path");
-
 colors.setTheme({
   title: ['white', 'italic'],
   error: ['bgRed', 'white', 'bold'],
@@ -74,6 +66,3 @@ var parseHTML = function(number) {
         });
     };
 }
-
-module.exports = parseHTML;
-module.exports = parseHTML;
