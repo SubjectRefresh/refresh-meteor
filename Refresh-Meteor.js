@@ -52,6 +52,7 @@ if (Meteor.isClient) {
             console.log("Logging out...");
             event.preventDefault();
             Meteor.logout();
+            Session.set('currentPage', "login");
         },
         'click #learn': function(event) {
             event.preventDefault();
