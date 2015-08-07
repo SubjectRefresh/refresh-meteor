@@ -1,0 +1,29 @@
+{
+  "name": "Refresh-Meteor",
+  "description": "A Machine Learning Question Generator",
+  "main": "Refresh-Meteor.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SubjectRefresh/Refresh-Meteor"
+  },
+  "bugs": {
+    "url": "https://github.com/SubjectRefresh/Refresh-Meteor/issues"
+  },
+  "dependencies": {
+    "async": "^1.4.0",
+    "beautifier": "^0.1.7",
+    "body-parser": "^1.13.3",
+    "chalk": "^1.1.0",
+    "cheerio": "^0.19.0",
+    "colors": "^1.1.2",
+    "natural": "^0.2.1",
+    "node-bing-api": "^2.0.0",
+    "pdftohtmljs": "^0.3.7",
+    "sesh": "^0.1.0",
+    "sync-request": "^2.0.1",
+    "utf8": "^2.1.1"
+  },
+  "devDependencies": {},
+  "preferGlobal": true,
+  "license": "SEE LICENSE IN LICENSE.md"
+}
