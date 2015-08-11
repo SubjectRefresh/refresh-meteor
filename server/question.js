@@ -12,25 +12,21 @@ console.log("Question.JS:".bold + " Successfully Imported Required Packages".blu
 var questionModule = function () {
     var self = this;
 
-    self.question = function (inputArray, callback) {
+    self.question = function question(inputArray, callback) {
         var output = [];
         var outputFinal = [];
         var sentence = inputArray.join(" ");
         var entityPositions = [];
-        var res = request('POST', 'https://api.textrazor.com', {
-            body: "apiKey=c0dbc052930dce78cc1dd1b37b3d3a4fb3f609c251c4f7e34a3b452a&text=" + utf8.encode(sentence) + "&extractors=" + utf8.encode("entities")
-        });
-        //console.log(res.getBody().toString('utf8'));
-        var data = JSON.parse(res.getBody().toString('utf8'));
-        for (i = 0; i < data.response.entities.length; i++) {
-            entityPositions.push([data.response.entities[i].matchedText, data.response.entities[i].startingPos, data.response.entities[i].endingPos]);
+        var res = Meteor.http.call("POST", "https://api.textrazor.com",{content: "apiKey=c0dbc052930dce78cc1dd1b37b3d3a4fb3f609c251c4f7e34a3b452a&text=" + sentence + "&extractors=" + "entities"});
+        data = res.data.response;
+        for (i = 0; i < data.entities.length; i++) {
+            entityPositions.push([data.entities[i].matchedText, data.entities[i].startingPos, data.entities[i].endingPos]);
         }
         output = [entityPositions, sentence];
         
         output2 = JSON.stringify(output);
-
         callback(output2);
     }
 };
+
 //callback = [[[[Entity, StartPos, EndPos], [Entity, StartPos, EndPos]], sentence], [[[Entity, StartPos, EndPos], [Entity, StartPos, EndPos]], sentence]]
-console.log("Convert.JS:".bold + " Successfully Defined `convert`".blue);
