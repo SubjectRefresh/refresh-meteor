@@ -1,4 +1,4 @@
-connection.connect();
+//connection.connect();
 console.log('Server Login')
 
 function AddUser(fName, lName, eMail, pass, uName) {
@@ -7,15 +7,15 @@ function AddUser(fName, lName, eMail, pass, uName) {
         pass = derivedKey;
 
 
-        connection.query('INSERT INTO UserData SET FirstName=?, LastName=?, Email=?, Hash=?, UserName=?, Salt=?', [fName, lName, eMail, pass, uName, salt], function(err, rows, fields) {
+        /*connection.query('INSERT INTO UserData SET FirstName=?, LastName=?, Email=?, Hash=?, UserName=?, Salt=?', [fName, lName, eMail, pass, uName, salt], function(err, rows, fields) {
             if (err) throw err;
 
-        });
+        });*/
     });
 }
 
 function login(eMail, pass) {
-    connection.query('SELECT Salt,Hash FROM UserData WHERE Email=?', [eMail], function(err, rows, fields) {
+    /*connection.query('SELECT Salt,Hash FROM UserData WHERE Email=?', [eMail], function(err, rows, fields) {
         if (err) throw err;
         console.log(rows);
         var salt = rows[0]['Salt'];
@@ -31,21 +31,21 @@ function login(eMail, pass) {
             if (err) console.log(err);
 
         });
-    });
+    });*/
 
 
 
 
 }
-var mysql = require('mysql');
+//var mysql = require('mysql');
 var crypto = require('crypto');
-var connection = mysql.createConnection({
+/*var connection = mysql.createConnection({
     host: '185.38.45.194',
     user: 'hexcompu_ref',
     password: 'AWDRGY123123',
     database: 'hexcompu_refresh'
 });
-connection.connect();
+connection.connect();*/
 console.log('Server Login')
 
 function AddUser(fName, lName, eMail, pass, uName) {
@@ -54,15 +54,15 @@ function AddUser(fName, lName, eMail, pass, uName) {
         pass = derivedKey;
 
 
-        connection.query('INSERT INTO UserData SET FirstName=?, LastName=?, Email=?, Hash=?, UserName=?, Salt=?', [fName, lName, eMail, pass, uName, salt], function(err, rows, fields) {
+        /*connection.query('INSERT INTO UserData SET FirstName=?, LastName=?, Email=?, Hash=?, UserName=?, Salt=?', [fName, lName, eMail, pass, uName, salt], function(err, rows, fields) {
             if (err) throw err;
 
-        });
+        });*/
     });
 }
 
 function login(eMail, pass) {
-    connection.query('SELECT Salt,Hash FROM UserData WHERE Email=?', [eMail], function(err, rows, fields) {
+    /*connection.query('SELECT Salt,Hash FROM UserData WHERE Email=?', [eMail], function(err, rows, fields) {
         if (err) throw err;
         console.log(rows);
         var salt = rows[0]['Salt'];
@@ -78,6 +78,6 @@ function login(eMail, pass) {
             if (err) throw err;
 
         });
-    });
+    });*/
 }
 login('jim', 'dave')

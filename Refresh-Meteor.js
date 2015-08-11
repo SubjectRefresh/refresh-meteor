@@ -134,7 +134,6 @@ if (Meteor.isClient) {
                 console.log(courseData[i].course);
                 var courseID = courseData[i].course.split("-")[0];
                 var year = courseData[i].course.split("-")[1];
-
             }
         }
     }

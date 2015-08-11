@@ -1,10 +1,3 @@
-colors.setTheme({
-  title: ['white', 'italic'],
-  error: ['bgRed', 'white', 'bold'],
-  info: ['bgYellow', 'white', 'italic'],
-  success: ['bgGreen', 'white'],
-});
-
 var tokenizer = new natural.TreebankWordTokenizer();
 var nounInflector = new natural.NounInflector();
 

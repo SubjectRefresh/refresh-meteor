@@ -6,12 +6,6 @@
 //O - Array of searchable terms as strings
 //
 /////////////////////////////////////////////////////////////////////////
-colors.setTheme({
-    title: ['white', 'italic'],
-    error: ['bgRed', 'white', 'bold'],
-    info: ['bgYellow', 'white', 'italic'],
-    success: ['bgGreen', 'white'],
-});
 
 console.log("Convert.JS:".title + " Successfully Imported Required Packages".success);
 
