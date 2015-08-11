@@ -34,11 +34,11 @@ minifiers@1.1.5
 minimongo@1.0.8
 mobile-status-bar@1.0.3
 mongo@1.1.0
-mrt:natural@1.0.1
 nooitaf:colors@0.0.2
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
 ordered-dict@1.0.3
+quietcreep:natural@1.1.1
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5
