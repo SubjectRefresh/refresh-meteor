@@ -1,5 +1,5 @@
-//connection.connect();
-console.log('Server Login')
+/*connection.connect();
+console.log('Server Login')*/
 
 function AddUser(fName, lName, eMail, pass, uName) {
     var salt = crypto.randomBytes(128).toString('base64');
@@ -38,7 +38,7 @@ function login(eMail, pass) {
 
 }
 //var mysql = require('mysql');
-var crypto = require('crypto');
+var crypto = Npm.require('crypto');
 /*var connection = mysql.createConnection({
     host: '185.38.45.194',
     user: 'hexcompu_ref',
