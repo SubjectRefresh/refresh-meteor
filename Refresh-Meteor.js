@@ -81,19 +81,21 @@ if (Meteor.isClient) {
         }
     });
 
+    function selectBoard(event) {
+        var newVal = $(event.target).val();
+        Session.set("board", newVal);
+        console.log("Got change on board selection: " + newVal);
+        examBoardCIE(function(data) {
+            console.log(data)
+        });
+    }
+
     Template.choose.events({
         'change #selectBoard': function(event) {
-            var newVal = $(event.target).val();
-            Session.set("board", newVal);
-            console.log("Got change on board selection: " + newVal);
-            listModule.examBoardCIE(function(data) {
-                console.log(data)
-            });
+            selectBoard(event);
         },
         'click #selectBoard': function(event) {
-            var newVal = $(event.target).val();
-            Session.set("board", newVal);
-            console.log("Got change on board selection: " + newVal);
+            selectBoard(event)
         },
         'change #selectSubject': function(event) {
             var newVal = $(event.target).val();

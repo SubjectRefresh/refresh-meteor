@@ -46,7 +46,7 @@ var crypto = Npm.require('crypto');
     database: 'hexcompu_refresh'
 });
 connection.connect();*/
-console.log('Server Login')
+//console.log('Server Login')
 
 function AddUser(fName, lName, eMail, pass, uName) {
     var salt = crypto.randomBytes(128).toString('base64');
